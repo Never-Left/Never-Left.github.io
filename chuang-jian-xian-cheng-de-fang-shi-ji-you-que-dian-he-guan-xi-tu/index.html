@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>创建线程的方式及优缺点和关系图 | 小白马zzz</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://never-left.github.io/favicon.ico?v=1592060943529">
+<link rel="stylesheet" href="https://never-left.github.io/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="😃
+创建线程的3种方式
+一、 Thread类创建线程
+1. 定义Thread类的子类，并重写该类的run方法，该run方法的方法体就代表了线程要完成的任务。因此把run()方法称为执行体。
+2. 创建Thread子类的实例，即创建了线程对..." />
+    <meta name="keywords" content="Java" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://never-left.github.io">
+        <img src="https://never-left.github.io/images/avatar.png?v=1592060943529" class="site-logo">
+        <h1 class="site-title">小白马zzz</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      小白马zzz by <a href="https://github.com/Never-Left">Never-Left</a> | <a class="rss" href="https://never-left.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">创建线程的方式及优缺点和关系图</h2>
+            <div class="post-date">2019-07-12</div>
+            
+              <div class="feature-container" style="background-image: url('https://never-left.github.io/post-images/chuang-jian-xian-cheng-de-fang-shi-ji-you-que-dian-he-guan-xi-tu.jpg')">
+              </div>
+            
+            <div class="post-content" v-pre>
+              <p>😃</p>
+<h2 id="创建线程的3种方式">创建线程的3种方式</h2>
+<h4 id="一-thread类创建线程">一、 Thread类创建线程</h4>
+<h5 id="1-定义thread类的子类并重写该类的run方法该run方法的方法体就代表了线程要完成的任务-因此把run方法称为执行体">1. 定义Thread类的子类，并重写该类的run方法，该run方法的方法体就代表了线程要完成的任务。因此把run()方法称为执行体。</h5>
+<h5 id="2-创建thread子类的实例即创建了线程对象">2. 创建Thread子类的实例，即创建了线程对象。</h5>
+<h5 id="3-调用线程对象的start方法来启动该线程">3. 调用线程对象的start()方法来启动该线程。</h5>
+<figure data-type="image" tabindex="1"><img src="https://never-left.github.io/post-images/1592058651994.png" alt="" loading="lazy"></figure>
+<h4 id="二-通过runnable接口创建线程">二、通过Runnable接口创建线程</h4>
+<h5 id="1-定义runnable接口的实现类并重写该接口的run方法该run方法的方法体同样是该线程的线程执行体">1. 定义runnable接口的实现类，并重写该接口的run()方法，该run()方法的方法体同样是该线程的线程执行体。</h5>
+<h5 id="2-创建-runnable实现类的实例并依此实例作为thread的target来创建thread对象该thread对象才是真正的线程对象">2. 创建 Runnable实现类的实例，并依此实例作为Thread的target来创建Thread对象，该Thread对象才是真正的线程对象。</h5>
+<h5 id="3-调用线程对象的start方法来启动该线程-2">3. 调用线程对象的start()方法来启动该线程。</h5>
+<figure data-type="image" tabindex="2"><img src="https://never-left.github.io/post-images/1592058664769.jpg" alt="" loading="lazy"></figure>
+<h4 id="三-通过callable和future创建线程">三、通过Callable和Future创建线程</h4>
+<h5 id="1-创建callable接口的实现类并实现call方法该call方法将作为线程执行体并且有返回值">1. 创建Callable接口的实现类，并实现call()方法，该call()方法将作为线程执行体，并且有返回值。</h5>
+<h5 id="2-创建callable实现类的实例使用futuretask类来包装callable对象该futuretask对象封装了该callable对象的call方法的返回值">2. 创建Callable实现类的实例，使用FutureTask类来包装Callable对象，该FutureTask对象封装了该Callable对象的call()方法的返回值。</h5>
+<h5 id="3-使用futuretask对象作为thread对象的target创建并启动新线程">3. 使用FutureTask对象作为Thread对象的target创建并启动新线程。</h5>
+<h5 id="4启动线程并调用futuretask对象的get方法来获得子线程执行结束后的返回值">4.启动线程并调用FutureTask对象的get()方法来获得子线程执行结束后的返回值</h5>
+<figure data-type="image" tabindex="3"><img src="https://never-left.github.io/post-images/1592058682474.jpg" alt="" loading="lazy"></figure>
+<h2 id="优缺点">优缺点</h2>
+<h5 id="使用继承thread类的方式创建多线程时优势是">使用继承Thread类的方式创建多线程时优势是：</h5>
+<h5 id="编写简单如果需要访问当前线程则无需使用threadcurrentthread方法直接使用this即可获得当前线程">编写简单，如果需要访问当前线程，则无需使用Thread.currentThread()方法，直接使用this即可获得当前线程。</h5>
+<h5 id="劣势是">劣势是：</h5>
+<h5 id="线程类已经继承了thread类所以不能再继承其他父类">线程类已经继承了Thread类，所以不能再继承其他父类。</h5>
+<h5 id="使用实现runnable-callable接口的方式创见多线程时">使用实现Runnable、Callable接口的方式创见多线程时</h5>
+<h5 id="优势是线程类只是实现了runnable接口或callable接口还可以继承其他类">优势是：线程类只是实现了Runnable接口或Callable接口，还可以继承其他类。</h5>
+<h5 id="在这种方式下多个线程可以共享同一个target对象所以非常适合多个相同线程来处理同一份资源的情况从而可以将cpu-代码和数据分开形成清晰的模型较好地体现了面向对象的思想-callable接口方式创建线程还可以通过返回值来判断线程执行情况">在这种方式下，多个线程可以共享同一个target对象，所以非常适合多个相同线程来处理同一份资源的情况，从而可以将CPU、代码和数据分开，形成清晰的模型，较好地体现了面向对象的思想。Callable接口方式创建线程还可以通过返回值来判断线程执行情况。</h5>
+<h5 id="劣势是-2">劣势是：</h5>
+<h5 id="编程稍微复杂如果要访问当前线程则必须使用threadcurrentthread方法">编程稍微复杂，如果要访问当前线程，则必须使用Thread.currentThread()方法。</h5>
+<h2 id="关系图">关系图</h2>
+<h4 id="thread关系图">Thread关系图</h4>
+<figure data-type="image" tabindex="4"><img src="https://never-left.github.io/post-images/1592058695053.jpg" alt="" loading="lazy"></figure>
+<h5 id="runnable关系图">Runnable关系图</h5>
+<figure data-type="image" tabindex="5"><img src="https://never-left.github.io/post-images/1592058702011.jpg" alt="" loading="lazy"></figure>
+<h5 id="callable关系图">Callable关系图</h5>
+<figure data-type="image" tabindex="6"><img src="https://never-left.github.io/post-images/1592058709629.jpg" alt="" loading="lazy"></figure>
+<h5 id="callable创建线程关系图">Callable创建线程关系图</h5>
+<figure data-type="image" tabindex="7"><img src="https://never-left.github.io/post-images/1592058714778.png" alt="" loading="lazy"></figure>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://never-left.github.io/java/" class="tag">
+                    Java
+                  </a>
+                
+              </div>
+            
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>
